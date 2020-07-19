@@ -1,11 +1,19 @@
 import React from 'react'
-import { View,Text} from "react-native"
 
-function App() {
+
+import {AppNavigator} from "./src/navigation/index"
+//REDUX
+import {Provider as ReduxProvider} from "react-redux"
+import { createStore } from "redux"
+import reducers from "./src/redux/reducers/index"
+
+
+
+const App = () => {
   return (
-    <View>
-      <Text>appppp</Text>
-    </View>
+    //<ReduxProvider store={createStore(reducers)}>
+      <AppNavigator />
+   // </ReduxProvider>
   )
 }
 
