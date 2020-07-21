@@ -118,4 +118,67 @@ function DrawerNavigator({navigation}){
   }
 
 
+
+
+
+
+
+
+
+  //---------------------------------
+  function BottomTabNavigation(){
+    return(
+      <Tab.Navigator
+        initialRouteName="Feed"
+        activeColor="#000000"
+      >
+        <Tab.Screen
+          name="Feed"
+          component={Feed}
+          options={{
+            tabBarLabel: '',
+            tabBarColor: '#000000',
+            tabBarIcon: ({ color }) => (
+              <Icon name="home-outline" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Notifications"
+          component={Notifications}
+          options={{
+            tabBarLabel: '',
+            tabBarColor: '#000000',
+            tabBarIcon: ({ color }) => (
+              <Icon name="notifications-outline" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Search"
+          component={Search}
+          options={{
+            tabBarLabel: '',
+            tabBarColor: '#000000',
+            tabBarIcon: ({ color }) => (
+              <Icon name="search-outline" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Messages"
+          component={Messages}
+          options={{
+            tabBarLabel: '',
+            tabBarColor: '#000000',
+            tabBarIcon: ({ color }) => (
+              <Icon name="chatbox-outline" color={color} size={26} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+      )
+  }
+
+
   

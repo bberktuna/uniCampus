@@ -1,5 +1,4 @@
 export * from "./Profile"
 export * from "./Logout"
-export * from "./AboutUs"
 export * from "./Favorites"
 export * from "./Settings"

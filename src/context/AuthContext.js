@@ -46,7 +46,7 @@ const tryLocalSignin = (dispatch) => {
 
         if(token){
             dispatch({ type: "signin", payload: token})
-            RootNavigation.navigate("HomeDrawer")
+            RootNavigation.navigate("HomeApp")
         } else {
             RootNavigation.navigate("Login")
         }
@@ -82,7 +82,7 @@ const signin = dispatch => async ({email, password}) => {
             await AsyncStorage.setItem("token", response.data.token)
             dispatch({type: "signin", payload: response.data.token})
 
-            RootNavigation.navigate("HomeDrawer")
+            RootNavigation.navigate("HomeApp")
         }
         catch(err){
             dispatch( { type: "add_error", payload: "Something went wrong with sign up"})

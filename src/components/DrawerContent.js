@@ -89,17 +89,7 @@ function DrawerContent(props) {
                             label="Favorites"
                             onPress={() => {props.navigation.navigate('Favorites')}}
                         />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                                name="settings-outline" 
-                                color={color}
-                                size={size}
-                                />
-                            )}
-                            label="AboutUs"
-                            onPress={() => {props.navigation.navigate('AboutUs')}}
-                        />
+
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
