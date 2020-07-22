@@ -1,20 +1,27 @@
 import React from 'react';
-import {Image, TouchableOpacity} from "react-native"
+import {TouchableOpacity} from "react-native"
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { HeaderBackButton, createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Icon from "react-native-vector-icons/Ionicons"
-import { useIsFocused } from '@react-navigation/native'
 import { Avatar } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
+//SCREENSSSSSSSSSSSSSS
 import {
   Feed,
   Search,
   Notifications,
-  Messages
+  Messages,
+
 } from "../../screens/BottomTab/index"
+
+import {
+  CreatePost,
+  CreateMessage,
+
+} from "../../screens/StackScreens"
 import { navigationRef } from '../RootNavigation';
 
 
@@ -26,26 +33,9 @@ const headerOff = ()=> ({
 
 
 
-function BottomTabNavigation(props){
+function BottomTabNavigation(){
 
-  const routeName = props.route.state
-    ? props.route.state.routes[props.route.state.index].name
-    : 'Search';
-
-  const isFocused = useIsFocused();
-
-  let icon = 'feather';
-
-  switch (routeName) {
-    case 'Messages':
-      icon = 'email-plus-outline';
-      break;
-    default :
-      icon = 'feather';
-      break;
-
-  }
-  return(
+return(
 <React.Fragment>
     <Tab.Navigator 
     labeled={false}
@@ -103,6 +93,12 @@ function BottomTabNavigation(props){
 
 
 const headerOptions = ({navigation}) => ({
+  headerStyle:{
+    backgroundColor: "black"
+  },
+  headerTitleStyle:{
+    color:"white"
+  },
   headerLeft: ()=> (
 
     <TouchableOpacity 
@@ -110,12 +106,15 @@ const headerOptions = ({navigation}) => ({
       style={{margin:5}}
     >
         <Avatar.Image
-        size={40}
-        source={require("../../../assets/brian.png")} />
+          size={40}
+          source={require("../../../assets/brian.png")} 
+        />
     </TouchableOpacity>
   ), 
   HeaderTitle: "Feed"
+  
 })
+
 
 const FeedStack = createStackNavigator()
 const SearchStack = createStackNavigator()
@@ -125,6 +124,7 @@ const MessagesStack = createStackNavigator()
 const _FeedStack = () => (
   <FeedStack.Navigator initialRouteName="Feed">
     <FeedStack.Screen name="Feed" component={Feed} options={headerOptions}/>
+    <FeedStack.Screen name="CreatePost" component={CreatePost} />
   </FeedStack.Navigator>
 )
 
@@ -137,52 +137,17 @@ const _SearchStack = () => (
 const _NotificationsStack = () => (
   <NotificationsStack.Navigator initialRouteName="Notifications">
     <NotificationsStack.Screen name="Notifications" component={Notifications} options={headerOptions}/>
+    <FeedStack.Screen name="CreatePost" component={CreatePost} />
   </NotificationsStack.Navigator>
 )
 
 const _MessagesStack = () => (
   <MessagesStack.Navigator initialRouteName="Messages">
     <MessagesStack.Screen name="Messages" component={Messages} options={headerOptions}/>
+    <FeedStack.Screen name="CreateMessage" component={CreateMessage} />
   </MessagesStack.Navigator>
 )
 
 
-/*const HomeStackScreen = ({navigation}) => (
-<HomeStack.Navigator screenOptions={{
-        headerStyle: {
-        backgroundColor: '#009387',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-        fontWeight: 'bold'
-        }
-    }}>
-        <HomeStack.Screen name="Home" component={HomeScreen} options={{
-        title:'Overview',
-        headerLeft: () => (
-            <Icon.Button name="ios-menu" size={25} backgroundColor="#009387" onPress={() => navigation.openDrawer()}></Icon.Button>
-        )
-        }} />
-</HomeStack.Navigator>
-);
-
-const DetailsStackScreen = ({navigation}) => (
-<DetailsStack.Navigator screenOptions={{
-        headerStyle: {
-        backgroundColor: '#1f65ff',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-        fontWeight: 'bold'
-        }
-    }}>
-        <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
-        headerLeft: () => (
-            <Icon.Button name="ios-menu" size={25} backgroundColor="#1f65ff" onPress={() => navigation.openDrawer()}></Icon.Button>
-        )
-        }} />
-</DetailsStack.Navigator>
-);
-*/
 
 export {BottomTabNavigation}

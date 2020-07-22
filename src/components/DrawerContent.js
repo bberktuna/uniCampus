@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
+
 import {
     Avatar,
     Title,
@@ -29,30 +30,33 @@ function DrawerContent(props) {
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent}>
-                    <View style={styles.userInfoSection}>
-                        <View style={{flexDirection:'row',marginTop: 15}}>
+                    <View style={{marginTop:-5}}>
+                        <ImageBackground
+                            source={require("../../assets/wp.png")}
+                            style={{flex:1,width: "100%", height: "100%"}}
+                        >
+                        <View style={{flexDirection:'column'}}>
                             <Avatar.Image 
-                                source={{
-                                    uri: 'https://api.adorable.io/avatars/50/abott@adorable.png'
-                                }}
-                                size={50}
+                                source={require("../../assets/brian.png")}
+                                size={70}
+                                style={{marginTop:10, marginLeft:10,}}
                             />
-                            <View style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>John Doe</Title>
-                                <Caption style={styles.caption}>@j_doe</Caption>
+                            <View style={{marginLeft:15, }}>
+                                <Title style={styles.title}>@admin</Title>  
+                                <View style={{flexDirection:"row"}}>
+                                    <Paragraph style={[styles.paragraph, styles.caption]}>442</Paragraph>
+                                    <Caption style={styles.caption}>Friends</Caption>
+                                </View>                             
                             </View>
                         </View>
 
                         <View style={styles.row}>
-                            <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
-                                <Caption style={styles.caption}>Following</Caption>
-                            </View>
-                            <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>100</Paragraph>
-                                <Caption style={styles.caption}>Followers</Caption>
-                            </View>
+                        
+                                
+                            
+
                         </View>
+                        </ImageBackground>
                     </View>
 
                     <Drawer.Section style={styles.drawerSection}>
@@ -102,9 +106,34 @@ function DrawerContent(props) {
                             onPress={() => {props.navigation.navigate('Settings')}}
                         />
                     </Drawer.Section>
-                    <Drawer.Section title="Preferences">
 
+
+                    <Drawer.Section title="Groups" style={styles.drawerSection}>
+                        <View style={{flexDirection: "row"}}>
+                            <Avatar.Image
+                                size={35}
+                                source={require("../../assets/brian.png")} 
+                                style={{margin:10}}
+                                />
+                            <DrawerItem
+                                label="Yapay Zeka Kulübü"
+                                onPress={() => console.log("going to group screen")}
+                            />
+                            </View> 
+
+                            <View style={{flexDirection: "row"}}>
+                            <Avatar.Image
+                                size={35}
+                                source={require("../../assets/cat.jpg")} 
+                                style={{margin:10}}
+                                />
+                            <DrawerItem
+                                label="Dans Kulübü"
+                                onPress={() => console.log("going to group screen")}
+                            />
+                            </View>      
                     </Drawer.Section>
+
                 </View>
             </DrawerContentScrollView>
             <Drawer.Section style={styles.bottomDrawerSection}>
@@ -134,13 +163,26 @@ const styles = StyleSheet.create({
       paddingLeft: 20,
     },
     title: {
-      fontSize: 16,
+      fontSize: 18,
       marginTop: 3,
-      fontWeight: 'bold',
+      color: "white",
+      textShadowColor:'black',
+      textShadowOffset:{width: 5, height: 5},
+      textShadowRadius:10,
+      
     },
     caption: {
-      fontSize: 14,
+      fontSize: 16,
       lineHeight: 14,
+      color: "white",
+      marginRight:10,
+      textShadowColor:'black',
+      textShadowOffset:{width: 5, height: 5},
+      textShadowRadius:10,
+
+    },
+    paragraph:{
+        marginRight:15
     },
     row: {
       marginTop: 20,
@@ -150,12 +192,9 @@ const styles = StyleSheet.create({
     section: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginRight: 15,
+      
     },
-    paragraph: {
-      fontWeight: 'bold',
-      marginRight: 3,
-    },
+
     drawerSection: {
       marginTop: 15,
     },

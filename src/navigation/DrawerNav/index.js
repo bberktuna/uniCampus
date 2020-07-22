@@ -25,7 +25,7 @@ function DrawerNavigation(){
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="HomeDrawer" component={BottomTabNavigation} />
         <Drawer.Screen name="Profile" component={Profile} />
-        <Drawer.Screen name="BookmarkScreen" component={Favorites} />
+        <Drawer.Screen name="Favorites" component={Favorites} />
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="Logout" component={Logout} />
         
