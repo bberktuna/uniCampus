@@ -1,5 +1,7 @@
 import React, {useContext} from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground , Image, FlatList , SafeAreaView} from 'react-native';
+import Svg, { Text } from "react-native-svg";
+
 
 import {
     Avatar,
@@ -7,7 +9,6 @@ import {
     Caption,
     Paragraph,
     Drawer,
-    Text,
     TouchableRipple,
     Switch
 } from 'react-native-paper';
@@ -20,138 +21,182 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import{ Context as AuthContext } from "../context/AuthContext"
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+
 
 function DrawerContent(props) {
-
 
     const { signout } = useContext(AuthContext)
 
     return(
         <View style={{flex:1}}>
-            <DrawerContentScrollView {...props}>
+            <DrawerContentScrollView {...props} style={{backgroundColor: "black"}} >
                 <View style={styles.drawerContent}>
                     <View style={{marginTop:-5}}>
                         <ImageBackground
-                            source={require("../../assets/wp.png")}
-                            style={{flex:1,width: "100%", height: "100%"}}
+                            source={require("../../assets/wp.jpg")}
+                            style={{flex:1,width: "100%", height: "100%", borderBottomWidth:2,borderBottomColor:"white"}}
                         >
                         <View style={{flexDirection:'column'}}>
-                            <Avatar.Image 
+                            <Image 
                                 source={require("../../assets/brian.png")}
-                                size={70}
-                                style={{marginTop:10, marginLeft:10,}}
+                                style={styles.profilePic}
                             />
-                            <View style={{marginLeft:15, }}>
-                                <Title style={styles.title}>@admin</Title>  
-                                <View style={{flexDirection:"row"}}>
-                                    <Paragraph style={[styles.paragraph, styles.caption]}>442</Paragraph>
-                                    <Caption style={styles.caption}>Friends</Caption>
+
+                        <View style={{marginLeft:15, }}>
+                        <Svg height="40" width="100">
+                            <Text
+                                fill="white"
+                                stroke="white"
+                                fontSize="18"
+                                x="0"
+                                y="25"
+                                style={styles.cusFont}
+                            >
+                                @admin
+                            </Text>
+                        </Svg> 
+
+                        <View style={{flexDirection:"row"}}>
+                            <Svg height="25" width="45">
+                                <Text
+                                    fill="white"
+                                    stroke="white"
+                                    fontSize="18"
+                                    x="0"
+                                    y="20"
+                                    style={styles.cusFont}
+                                >
+                                    422
+                                </Text>
+                            </Svg> 
+                            <Svg height="25" width="90">
+                                <Text
+                                    fill="white"
+                                    stroke="white"
+                                    fontSize="18"
+                                    x="0"
+                                    y="20"
+                                    style={styles.cusFont}
+                                >
+                                    Friends
+                                </Text>
+                        </Svg> 
                                 </View>                             
                             </View>
                         </View>
 
                         <View style={styles.row}>
                         
-                                
-                            
 
                         </View>
                         </ImageBackground>
                     </View>
 
-                    <Drawer.Section style={styles.drawerSection}>
+                    <Drawer.Section >
                         <DrawerItem 
-                            icon={({color, size}) => (
+                            icon={() => (
                                 <Icon 
                                 name="home-outline" 
-                                color={color}
-                                size={size}
+                                color="white"
+                                size={30}
                                 />
                             )}
+                            labelStyle={styles.drawerLabel}
                             label="Feed"
                             onPress={() => {props.navigation.navigate('Feed')}}
                         />
                         <DrawerItem 
-                            icon={({color, size}) => (
+                            icon={() => (
                                 <Icon 
                                 name="account-outline" 
-                                color={color}
-                                size={size}
+                                color="white"
+                                size={30}
                                 />
                             )}
+                            labelStyle={styles.drawerLabel}
                             label="Profile"
                             onPress={() => {props.navigation.navigate('Profile')}}
+                            
                         />
                         <DrawerItem 
-                            icon={({color, size}) => (
+                            icon={() => (
                                 <Icon 
                                 name="bookmark-outline" 
-                                color={color}
-                                size={size}
+                                color="white"
+                                size={30}
                                 />
                             )}
+                            labelStyle={styles.drawerLabel}
                             label="Favorites"
                             onPress={() => {props.navigation.navigate('Favorites')}}
                         />
 
                         <DrawerItem 
-                            icon={({color, size}) => (
+                            icon={() => (
                                 <Icon 
                                 name="account-check-outline" 
-                                color={color}
-                                size={size}
+                                color="white"
+                                size={30}
                                 />
                             )}
+                            labelStyle={styles.drawerLabel}
                             label="Settings"
                             onPress={() => {props.navigation.navigate('Settings')}}
+                            style={styles.drawerItemStyle}
                         />
-                    </Drawer.Section>
 
 
-                    <Drawer.Section title="Groups" style={styles.drawerSection}>
-                        <View style={{flexDirection: "row"}}>
-                            <Avatar.Image
-                                size={35}
-                                source={require("../../assets/brian.png")} 
-                                style={{margin:10}}
-                                />
+                        <View style={{flexDirection: "row", flex:1}}>
                             <DrawerItem
+                                icon={ ()=> (
+                                    <Image
+                                        source={require("../../assets/group.jpg")} 
+                                        style={styles.groupImage}
+                                    />
+                                )}
                                 label="Yapay Zeka Kulübü"
+                                labelStyle={styles.drawerLabel}
                                 onPress={() => console.log("going to group screen")}
                             />
-                            </View> 
+                        </View> 
+                
+                        </Drawer.Section>
 
-                            <View style={{flexDirection: "row"}}>
-                            <Avatar.Image
-                                size={35}
-                                source={require("../../assets/cat.jpg")} 
-                                style={{margin:10}}
-                                />
-                            <DrawerItem
-                                label="Dans Kulübü"
-                                onPress={() => console.log("going to group screen")}
-                            />
-                            </View>      
-                    </Drawer.Section>
 
                 </View>
             </DrawerContentScrollView>
-            <Drawer.Section style={styles.bottomDrawerSection}>
+
+            <Drawer.Section style={styles.bottomSection}>
                 <DrawerItem 
-                    icon={({color, size}) => (
+                    icon={() => (
                         <Icon 
                         name="exit-to-app" 
-                        color={color}
-                        size={size}
+                        color="white"
+                        size={30}
                         />
                     )}
                     label="Sign Out"
+                    labelStyle={styles.drawerLabel}
                     onPress={() => signout() }
                 />
             </Drawer.Section>
         </View>
     );
 }
+
+const data = [
+    {
+        title:"Yapay zeka kulübü", key:"1", 
+    },
+    {
+        title:"dans kulübü", key:"2", 
+    },
+]
+    
+
+
 
 export {DrawerContent}
 
@@ -166,24 +211,10 @@ const styles = StyleSheet.create({
       fontSize: 18,
       marginTop: 3,
       color: "white",
-      textShadowColor:'black',
-      textShadowOffset:{width: 5, height: 5},
-      textShadowRadius:10,
+
       
     },
-    caption: {
-      fontSize: 16,
-      lineHeight: 14,
-      color: "white",
-      marginRight:10,
-      textShadowColor:'black',
-      textShadowOffset:{width: 5, height: 5},
-      textShadowRadius:10,
 
-    },
-    paragraph:{
-        marginRight:15
-    },
     row: {
       marginTop: 20,
       flexDirection: 'row',
@@ -195,18 +226,40 @@ const styles = StyleSheet.create({
       
     },
 
-    drawerSection: {
-      marginTop: 15,
+    cusFont:{
+        fontFamily:"Quicksand-Bold"
     },
-    bottomDrawerSection: {
-        marginBottom: 15,
-        borderTopColor: '#f4f4f4',
-        borderTopWidth: 1
+    drawerLabel:{
+        color:"white",
+        fontFamily:"Quicksand-Bold",
+        fontSize:18,
+        marginBottom:6,
+        marginLeft:-10
     },
-    preference: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingVertical: 12,
-      paddingHorizontal: 16,
+    groupImage:{
+        width: 40,
+        height: 40,
+        borderRadius: 25,
+        borderWidth:1,
+        borderColor: "white",
     },
+    drawerItemStyle:{
+        borderBottomColor:"white",
+        borderBottomWidth:2,
+    },
+    profilePic:{
+        height:70,
+        width: 70,
+        borderRadius: 35,
+        borderWidth:2,
+        borderColor: "white",
+        marginLeft:15,
+        marginTop:15
+    },
+    bottomSection:{
+        backgroundColor: "black",
+        marginBottom:0,
+        borderTopWidth:2,
+        borderColor: "white"
+    }
   });

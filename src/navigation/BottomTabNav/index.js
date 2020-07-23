@@ -42,7 +42,6 @@ return(
     barStyle={{
       backgroundColor:"#000"
     }}
-    
   >
     <Tab.Screen 
       name="_FeedStack" 
@@ -123,7 +122,7 @@ const MessagesStack = createStackNavigator()
 
 const _FeedStack = () => (
   <FeedStack.Navigator initialRouteName="Feed">
-    <FeedStack.Screen name="Feed" component={Feed} options={headerOptions}/>
+    <FeedStack.Screen name="Feed" component={Feed} options={headerOptions} />
     <FeedStack.Screen name="CreatePost" component={CreatePost} />
   </FeedStack.Navigator>
 )
