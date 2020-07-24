@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const User = mongoose.model("User")
+const Post = mongoose.model("Post")
 const jwt = require("jsonwebtoken")
 
 const router = express.Router()
@@ -48,6 +49,7 @@ router.post("/signin", async (req, res) => {
         return res.status(422).send({ error: "invaild password"})
     }
 })
+
 
 
 

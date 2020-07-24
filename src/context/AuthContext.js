@@ -1,6 +1,6 @@
 //we call dispatch when we need to uptdate our state
 import createDataContext from "../context/createDataContext"
-import trackerApi from "../api/index"
+import uniCampusApi from "../api/index"
 import AsyncStorage from '@react-native-community/async-storage';
 import * as RootNavigation from "../navigation/RootNavigation"
 
@@ -62,7 +62,7 @@ const clearErrorMessage = (dispatch) => {
 const signup = (dispatch) => {
     return async ({email, password}) => {
         try{
-            const response = await trackerApi.post("/signup", {email, password} )
+            const response = await uniCampusApi.post("/signup", {email, password} )
             await AsyncStorage.setItem("token", response.data.token)
             dispatch({type:"signup", payload: response.data.token})
             
@@ -78,7 +78,7 @@ const signup = (dispatch) => {
 
 const signin = dispatch => async ({email, password}) => {
         try{
-            const response = await trackerApi.post("/signin", {email, password})
+            const response = await uniCampusApi.post("/signin", {email, password})
             await AsyncStorage.setItem("token", response.data.token)
             dispatch({type: "signin", payload: response.data.token})
 

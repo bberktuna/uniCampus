@@ -36,7 +36,7 @@ function DrawerContent(props) {
                     <View style={{marginTop:-5}}>
                         <ImageBackground
                             source={require("../../assets/wp.jpg")}
-                            style={{flex:1,width: "100%", height: "100%", borderBottomWidth:2,borderBottomColor:"white"}}
+                            style={{flex:1,width: "100%", height: "100%"}}
                         >
                         <View style={{flexDirection:'column'}}>
                             <Image 
@@ -106,6 +106,7 @@ function DrawerContent(props) {
                             labelStyle={styles.drawerLabel}
                             label="Feed"
                             onPress={() => {props.navigation.navigate('Feed')}}
+                            style={styles.drawerItemStyleTop}
                         />
                         <DrawerItem 
                             icon={() => (
@@ -246,6 +247,10 @@ const styles = StyleSheet.create({
     drawerItemStyle:{
         borderBottomColor:"white",
         borderBottomWidth:2,
+    },
+    drawerItemStyleTop:{
+        borderTopColor:"white",
+        borderTopWidth:2,
     },
     profilePic:{
         height:70,

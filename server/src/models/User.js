@@ -15,8 +15,10 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+
+//HASHING PASSWORD
 userSchema.pre("save", function(next) {//data baseye user savelemeden once calıscak func
-    const user = this
+    const user = this  
     if (!user.isModified("password")){
         return next()
     }
