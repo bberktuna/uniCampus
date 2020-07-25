@@ -20,6 +20,7 @@ import {
 import {
   CreatePost,
   CreateMessage,
+  PostDetail
 
 } from "../../screens/StackScreens"
 import { navigationRef } from '../RootNavigation';
@@ -124,6 +125,7 @@ const _FeedStack = () => (
   <FeedStack.Navigator initialRouteName="Feed">
     <FeedStack.Screen name="Feed" component={Feed} options={headerOptions} />
     <FeedStack.Screen name="CreatePost" component={CreatePost} />
+    <FeedStack.Screen name="PostDetail" component={PostDetail} />
   </FeedStack.Navigator>
 )
 

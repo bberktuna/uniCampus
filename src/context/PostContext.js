@@ -42,8 +42,7 @@ const editPost = (dispatch) => {
         dispatch({ type: "edit_post", payload: {id, stringContent}
     })
     //id:id , title:title, content:content
-    if(callback)
-        callback()
+    RootNavigation.navigate("_FeedStack")
     }
    
 }
@@ -58,22 +57,22 @@ const getPost = (dispatch) => {
 }
 
 const addPost = (dispatch) => {
-    return async (stringContent, callback) => {
+    return async (stringContent) => {
 
         await uniCampusApi.post("/feed", { stringContent })
         /*dispatch({ 
             type: "add_blogpost", 
             payload: {title, content}
         })//title:title,content:content*/
-        if(callback)
-            callback()
+        RootNavigation.navigate("_FeedStack")
+
     }   
 }
 
 const deletePost = (dispatch) => {
     return async (id) => {
         await uniCampusApi.delete(`/feed/${id}`)
-        dispatch({ 
+        dispatch({
             type: "delete_post", 
             payload: id
         })
@@ -82,7 +81,7 @@ const deletePost = (dispatch) => {
 
 
 
-export const { Context, Provider} = createDataContext(
+export const {Context, Provider} = createDataContext(
     postReducer, //our reducer
     {   addPost, 
         deletePost, 

@@ -1,12 +1,12 @@
 import React, {useContext} from 'react'
 import { View, StyleSheet} from "react-native"
-import { Context } from "../../context/AuthContext"
+import { Context as AuthContext } from "../../context/AuthContext"
 import {AuthForm, NavLink} from "../../components/index"
 
 
 const Login = ({navigation}) => {
 
-    const { state, signin, clearErrorMessage } = useContext(Context)
+    const { state, signin, clearErrorMessage } = useContext(AuthContext)
 
     const listener = navigation.addListener('blur', clearErrorMessage);
 

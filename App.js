@@ -7,6 +7,7 @@ import {NavigationContainer} from "@react-navigation/native"
 
 //CONTEXT
 import { Provider as AuthProvider} from "./src/context/AuthContext"
+import { Provider as PostProvider} from "./src/context/PostContext"
 
 //SCREENS
 import {DrawerNavigation} from "./src/navigation/DrawerNav/index"
@@ -22,6 +23,7 @@ const RootStack = createStackNavigator();
 const App = () => {
   return (
     //<ReduxProvider store={createStore(reducers)}>
+    <PostProvider>
     <AuthProvider>
       <NavigationContainer ref={navigationRef}>
 
@@ -35,6 +37,7 @@ const App = () => {
 
       </NavigationContainer>
     </AuthProvider>
+    </PostProvider>
 
    // </ReduxProvider>
   )

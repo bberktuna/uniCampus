@@ -93,7 +93,7 @@ const signin = dispatch => async ({email, password}) => {
 
 
 
-export const {Provider, Context } = createDataContext(
+export const {Context, Provider} = createDataContext(
     authReducer,
     { signin, signout, signup, clearErrorMessage, tryLocalSignin },
     {token: null, errorMessage: "" }

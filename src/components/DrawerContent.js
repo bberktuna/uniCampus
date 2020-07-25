@@ -21,7 +21,6 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import{ Context as AuthContext } from "../context/AuthContext"
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 

@@ -1,13 +1,12 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const Post = mongoose.model("Post")
-const jwt = require("jsonwebtoken")
 
 const router = express.Router()
 
 //GET THE CREATED POSTS
 router.get("/feed", async (req, res)=> {
-    const {post_likes, post_dislikes, post_stringContent} = req.body
+    const {post_stringContent} = req.body
 
     const posts = await Post.find()
     res.send(posts)
@@ -16,12 +15,10 @@ router.get("/feed", async (req, res)=> {
 
 //CREATE NEW POST
 router.post("/feed" , async (req, res)=> {
-    const {post_likes, post_dislikes, post_stringContent} = req.body
+    const {post_stringContent} = req.body
 
     try{
         const post = new Post({
-            post_likes, 
-            post_dislikes,
             post_stringContent
         })
         await post.save()
@@ -48,7 +45,7 @@ router.patch("/posts/:id", async (req, res) => {
     try {
       const post = await Post.findOne({ _id: req.params.id })
   
-      if (req.body.title) {
+      if (req.body.post_stringContent) {
         post.post_stringContent = req.body.post_stringContent
       }
   

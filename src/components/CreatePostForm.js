@@ -14,12 +14,10 @@ const CreatePostForm = ({ onSubmit, initialValues }) => {
     return (
     <View >
 
-
         <TextInput 
             value={stringContent}
             onChangeText={(text) => setStringContent(text)}
             style={styles.input}
-            label="What's on your mind?"
         />
 
 
@@ -34,7 +32,7 @@ const CreatePostForm = ({ onSubmit, initialValues }) => {
 
 CreatePostForm.defaultProps = {
     initialValues: {
-        stringContent:"",
+        stringContent:"asdasd",
     }
 }
 
