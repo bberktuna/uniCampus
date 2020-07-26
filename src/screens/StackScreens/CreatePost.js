@@ -1,21 +1,57 @@
-import React, { useContext } from 'react'
-import {Text, View} from "react-native"
-import {CreatePostForm} from "../../components/index"
+import React ,{useState, useContext, useEffect} from 'react'
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    TextInput
+  } from 'react-native';
 import {Context as PostContext} from "../../context/PostContext"
 
-const CreatePost = ({navigation}) => {
+const CreatePost = ({initialValues,navigation}) => {
 
-    const { addPost } = useContext(PostContext)
+    const [stringContent, setStringContent] = useState(initialValues.stringContent)
+
+
+    const { addPost, getPost } = useContext(PostContext)
+
 
     return (
         <View>
-            <CreatePostForm
-                onSubmit={(stringContent) => {
-                    addPost( stringContent, () => navigation.navigate("Feed"))
-            }}
+            <TextInput 
+                value={stringContent}
+                onChangeText={(text) => setStringContent(text)}
+                style={styles.input}
             />
-        </View>
+
+       
+
+        <TouchableOpacity
+            onPress={()=> addPost(stringContent)}
+            
+            >
+            <Text>POST</Text>
+        </TouchableOpacity>
+
+    </View>
     )
 }
 
+CreatePost.defaultProps = {
+    initialValues: {
+        stringContent:"",
+    }
+}
+
+const styles = StyleSheet.create({
+    input:{
+        fontSize:18,
+        borderWidth:1,
+        borderColor:"black",
+        width:200,
+        marginBottom:10,
+        marginLeft:10
+
+    }
+})
 export {CreatePost}

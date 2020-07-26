@@ -6,9 +6,7 @@ import * as RootNavigation from "../navigation/RootNavigation"
 const postReducer = (state, action) => {
     switch(action.type){
         case "get_post":{
-            return(
-                action.payload
-            )
+            return action.payload
         }
         /*case "add_blogpost":{
             return [...state, 
@@ -38,18 +36,18 @@ const postReducer = (state, action) => {
 
 const editPost = (dispatch) => {
     return async (id, stringContent, callback) => {
-        await uniCampusApi.put(`/feed/${id}`, { stringContent })
+        await uniCampusApi.put(`/api/feed/${id}`, { stringContent })
         dispatch({ type: "edit_post", payload: {id, stringContent}
     })
     //id:id , title:title, content:content
-    RootNavigation.navigate("_FeedStack")
+    RootNavigation.navigate("Feed")
     }
    
 }
 
 const getPost = (dispatch) => {
     return async () => {
-        const response = await uniCampusApi.get("/feed")
+        const response = await uniCampusApi.get("/api/feed")
 
         dispatch({ type: "get_post", payload: response.data})
         
@@ -59,19 +57,19 @@ const getPost = (dispatch) => {
 const addPost = (dispatch) => {
     return async (stringContent) => {
 
-        await uniCampusApi.post("/feed", { stringContent })
+        await uniCampusApi.post("/api/feed", { stringContent })
         /*dispatch({ 
             type: "add_blogpost", 
             payload: {title, content}
         })//title:title,content:content*/
-        RootNavigation.navigate("_FeedStack")
+        RootNavigation.navigate("Feed")
 
     }   
 }
 
 const deletePost = (dispatch) => {
     return async (id) => {
-        await uniCampusApi.delete(`/feed/${id}`)
+        await uniCampusApi.delete(`/api/feed${id}`)
         dispatch({
             type: "delete_post", 
             payload: id

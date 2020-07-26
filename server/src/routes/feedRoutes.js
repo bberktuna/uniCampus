@@ -6,7 +6,6 @@ const router = express.Router()
 
 //GET THE CREATED POSTS
 router.get("/feed", async (req, res)=> {
-    const {post_stringContent} = req.body
 
     const posts = await Post.find()
     res.send(posts)
@@ -15,15 +14,15 @@ router.get("/feed", async (req, res)=> {
 
 //CREATE NEW POST
 router.post("/feed" , async (req, res)=> {
-    const {post_stringContent} = req.body
+  
+    const {stringContent} = req.body
 
     try{
-        const post = new Post({
-            post_stringContent
-        })
+        const post = new Post({stringContent})
         await post.save()
-        res.send(post)
 
+        res.send( post)
+        
     }catch(err){
         return console.log("error on // feedRoutes.js//router.post/feed")
     }
@@ -45,8 +44,8 @@ router.patch("/posts/:id", async (req, res) => {
     try {
       const post = await Post.findOne({ _id: req.params.id })
   
-      if (req.body.post_stringContent) {
-        post.post_stringContent = req.body.post_stringContent
+      if (req.body.stringContent) {
+        post.stringContent = req.body.stringContent
       }
   
       await post.save()

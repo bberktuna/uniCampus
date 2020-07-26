@@ -11,18 +11,11 @@ const feedRoutes = require("./routes/feedRoutes")
 const requireAuth = require("./middlewares/requireAuth")
 
 
+const mongoUri  = "mongodb+srv://bla_raynaud:bWYeJwXxk19tC2Bp@unicampuscluster.1ibyb.mongodb.net/uniDB?retryWrites=true&w=majority"
 const app = express()
-const mongoUri  = "mongodb+srv://bla_raynaud:tXZd1FA2ZfiiKH9A@unicampuscluster.1ibyb.mongodb.net/<dbname>?retryWrites=true&w=majority"
-
 app.use(bodyParser.json())
 app.use(authRoutes)
-app.use(feedRoutes)
-try{
-    app.use("/api", feedRoutes)
-
-}catch(err){
-    console.log("cananan;")
-}
+app.use("/api", feedRoutes)
 
 
 
@@ -33,7 +26,6 @@ mongoose.connect(mongoUri, {
     useCreateIndex:true,
     useUnifiedTopology: true 
 })
-
 mongoose.connection.on("connected", () => {
     console.log("connected to mongo instance")
 })
