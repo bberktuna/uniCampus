@@ -1,14 +1,19 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, StyleSheet,TextInput, TouchableOpacity, Text } from "react-native"
 import {Spacer} from "./Spacer"
 
+
+
 const AuthForm = ( {headerText, errorMessage, onSubmit, submitButtonText} ) => {
 
-    
+
+
     const [email , setEmail ] = useState("")
     const [password , setPassword ] = useState("")
 
+
     return (
+
     <View style={styles.container}>
 
         <Spacer>
@@ -57,6 +62,7 @@ const AuthForm = ( {headerText, errorMessage, onSubmit, submitButtonText} ) => {
  
 
     </View>
+
     )
 }
 

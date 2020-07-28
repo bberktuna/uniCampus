@@ -69,7 +69,7 @@ const addPost = (dispatch) => {
 
 const deletePost = (dispatch) => {
     return async (id) => {
-        await uniCampusApi.delete(`/api/feed${id}`)
+        await uniCampusApi.delete(`/api/feed/${id}`)
         dispatch({
             type: "delete_post", 
             payload: id

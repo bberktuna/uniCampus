@@ -39,4 +39,5 @@ app.get("/", requireAuth, (req, res) => {//get request to root directory and run
 //LISTEN
 app.listen(3000, () => {
     console.log("listening on port 3000")
+    
 })

@@ -7,7 +7,15 @@ const jwt = require("jsonwebtoken")
 const router = express.Router()
 
 
-
+router.get("/profile/:id", async (req, res) => {
+    try{
+        const user = await await User.findOne({ _id: req.params.id})
+        res.send(user)
+    }catch {
+        res.status(404)
+        res.send({ error: "user doesnt't exist" })
+      }
+})
 
 router.post("/signup", async (req, res) => {
     const { email, password } = req.body

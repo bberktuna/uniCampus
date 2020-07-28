@@ -19,10 +19,14 @@ import {
 
 const RootStack = createStackNavigator();
 
+//REDUXXXX
+import {Provider as ReduxProvider} from "react-redux"
+import {store} from "./src/redux/store"
+
 
 const App = () => {
   return (
-    //<ReduxProvider store={createStore(reducers)}>
+//<ReduxProvider store={store}>
     <PostProvider>
     <AuthProvider>
       <NavigationContainer ref={navigationRef}>
@@ -39,7 +43,7 @@ const App = () => {
     </AuthProvider>
     </PostProvider>
 
-   // </ReduxProvider>
+//</ReduxProvider>
   )
 }
 

@@ -1,12 +1,23 @@
-import React from 'react'
-import {View, Text} from "react-native"
+import React, {useContext, useEffect, useState} from 'react'
+import {View, Text,StyleSheet, FlatList, TouchableOpacity} from "react-native"
+import {Context as AuthContext } from "../../context/AuthContext"
 
-const Profile = () => {
+
+
+
+
+
+const Profile = ({navigation}) => {
+
+
+
     return (
         <View>
-            <Text>Profile</Text>
+            <Text> profile  </Text>
         </View>
     )
 }
 
 export {Profile}
+
+

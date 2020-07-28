@@ -26,9 +26,10 @@ import{ Context as AuthContext } from "../context/AuthContext"
 
 function DrawerContent(props) {
 
-    const { signout } = useContext(AuthContext)
+    const { signout} = useContext(AuthContext)
 
     return(
+
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props} style={{backgroundColor: "black"}} >
                 <View style={styles.drawerContent}>
@@ -53,10 +54,9 @@ function DrawerContent(props) {
                                 y="25"
                                 style={styles.cusFont}
                             >
-                                @admin
+                            asdasd
                             </Text>
                         </Svg> 
-
                         <View style={{flexDirection:"row"}}>
                             <Svg height="25" width="45">
                                 <Text
